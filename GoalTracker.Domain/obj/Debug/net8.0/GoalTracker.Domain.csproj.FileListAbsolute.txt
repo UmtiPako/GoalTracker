@@ -1,0 +1,12 @@
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\bin\Debug\net8.0\GoalTracker.Domain.deps.json
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\bin\Debug\net8.0\GoalTracker.Domain.dll
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\bin\Debug\net8.0\GoalTracker.Domain.pdb
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\GoalTracker.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\GoalTracker.Domain.AssemblyInfoInputs.cache
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\GoalTracker.Domain.AssemblyInfo.cs
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\GoalTracker.Domain.csproj.CoreCompileInputs.cache
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\GoalTracker.Domain.dll
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\refint\GoalTracker.Domain.dll
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\GoalTracker.Domain.pdb
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\ref\GoalTracker.Domain.dll
+C:\Users\umutp\source\repos\gatewayproject\GoalTracker.Domain\obj\Debug\net8.0\GoalTracker.Domain.csproj.AssemblyReference.cache
