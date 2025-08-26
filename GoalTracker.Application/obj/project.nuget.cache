@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ysuqlIlRB1E=",
+  "dgSpecHash": "RLQ/2J1l9d4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Application\\GoalTracker.Application.csproj",
+  "projectFilePath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\umutp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.19\\microsoft.aspnetcore.cryptography.internal.8.0.19.nupkg.sha512",
     "C:\\Users\\umutp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.19\\microsoft.aspnetcore.cryptography.keyderivation.8.0.19.nupkg.sha512",

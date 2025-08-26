@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj": {}
+    "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Application\\GoalTracker.Application.csproj": {
+    "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Application\\GoalTracker.Application.csproj",
+        "projectUniqueName": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj",
         "projectName": "GoalTracker.Application",
-        "projectPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Application\\GoalTracker.Application.csproj",
+        "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj",
         "packagesPath": "C:\\Users\\umutp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Application\\obj\\",
+        "outputPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\GoalTracker.Domain.csproj": {
-                "projectPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\GoalTracker.Domain.csproj"
+              "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj": {
+                "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\GoalTracker.Domain.csproj": {
+    "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\GoalTracker.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj",
         "projectName": "GoalTracker.Domain",
-        "projectPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\GoalTracker.Domain.csproj",
+        "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj",
         "packagesPath": "C:\\Users\\umutp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\obj\\",
+        "outputPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -158,14 +158,14 @@
         }
       }
     },
-    "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj": {
+    "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj",
         "projectName": "GoalTracker.Infrastructure",
-        "projectPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Infrastructure\\GoalTracker.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\umutp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -186,11 +186,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Application\\GoalTracker.Application.csproj": {
-                "projectPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Application\\GoalTracker.Application.csproj"
+              "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj": {
+                "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj"
               },
-              "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\GoalTracker.Domain.csproj": {
-                "projectPath": "C:\\Users\\umutp\\source\\repos\\gatewayproject\\GoalTracker.Domain\\GoalTracker.Domain.csproj"
+              "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj": {
+                "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj"
               }
             }
           }
