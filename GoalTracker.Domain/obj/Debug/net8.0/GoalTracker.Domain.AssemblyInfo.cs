@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GoalTracker.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b84200ded749d8bb9ca6b9a11e9a8cddedaf17a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13f77f27b648b043df5b04878d730d4159f51228")]
 [assembly: System.Reflection.AssemblyProductAttribute("GoalTracker.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GoalTracker.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

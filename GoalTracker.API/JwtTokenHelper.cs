@@ -20,7 +20,7 @@ namespace GoalTracker
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new Claim[]
+                Subject = new ClaimsIdentity
                 {
                 new Claim(ClaimTypes.Name, username)
                 }),
