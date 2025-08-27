@@ -13,7 +13,7 @@ namespace GoalTracker.Application.Interfaces
         Task<List<DailyGoalsDTO>?> GetAllDailyGoals();
         Task<List<Goal>?> GetGoalsFromDay(DateOnly day);
         Task AddGoalAsync(Goal goal);
-        Task DeleteAsync(Goal goal);
+        Task DeleteAsync(int dailyID);
 
     }
 }

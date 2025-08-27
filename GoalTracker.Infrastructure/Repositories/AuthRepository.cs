@@ -38,10 +38,6 @@ namespace GoalTracker.Infrastructure.Repositories
 
         public async Task<bool> RegisterAsync(LoginDTO loginDTO)
         {
-            var existingUser = await _userManager.FindByNameAsync(loginDTO.Username);
-            if (existingUser != null)
-                return false;
-
             AppUser new_user = new AppUser { UserName = loginDTO.Username };
 
             IdentityResult result = await _userManager.CreateAsync(new_user, loginDTO.Password);

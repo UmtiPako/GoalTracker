@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoalTracker.API", "GoalTracker\GoalTracker.API.csproj", "{539666AD-A8BC-4318-89EA-9F3E161C484A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoalTracker.Application", "GoalTracker.Application\GoalTracker.Application.csproj", "{5B3C6288-B0EB-4CFC-8136-5BDFD007A512}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoalTracker.Domain", "GoalTracker.Domain\GoalTracker.Domain.csproj", "{D12B08E7-52A3-4A60-86D4-45E7F02D3272}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoalTracker.Infrastructure", "GoalTracker.Infrastructure\GoalTracker.Infrastructure.csproj", "{BB3BE2BC-38EC-484D-8E6E-A36EA82E2471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoalTracker.API", "GoalTracker.API\GoalTracker.API.csproj", "{825191E0-8F9E-486E-A819-D69927D87465}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B3C6288-B0EB-4CFC-8136-5BDFD007A512} = {5B3C6288-B0EB-4CFC-8136-5BDFD007A512}
+		{BB3BE2BC-38EC-484D-8E6E-A36EA82E2471} = {BB3BE2BC-38EC-484D-8E6E-A36EA82E2471}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{539666AD-A8BC-4318-89EA-9F3E161C484A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{539666AD-A8BC-4318-89EA-9F3E161C484A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{539666AD-A8BC-4318-89EA-9F3E161C484A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{539666AD-A8BC-4318-89EA-9F3E161C484A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5B3C6288-B0EB-4CFC-8136-5BDFD007A512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B3C6288-B0EB-4CFC-8136-5BDFD007A512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B3C6288-B0EB-4CFC-8136-5BDFD007A512}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +33,10 @@ Global
 		{BB3BE2BC-38EC-484D-8E6E-A36EA82E2471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB3BE2BC-38EC-484D-8E6E-A36EA82E2471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB3BE2BC-38EC-484D-8E6E-A36EA82E2471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{825191E0-8F9E-486E-A819-D69927D87465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{825191E0-8F9E-486E-A819-D69927D87465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{825191E0-8F9E-486E-A819-D69927D87465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{825191E0-8F9E-486E-A819-D69927D87465}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,7 +23,7 @@ namespace GoalTracker.ApiControllers
         public async Task<IActionResult> GetAllGoals()
         {
             var goals = await _goalService.ListAsync();
-            return goals.IsNullOrEmpty() ? BadRequest() : Ok(goals);
+            return goals.IsNullOrEmpty() ? BadRequest("Nah.") : Ok(goals);
         }
 
         [HttpPost("AddOne")]
@@ -36,7 +36,20 @@ namespace GoalTracker.ApiControllers
             }
             catch(Exception ex)
             {
-                return BadRequest("There was an error!");
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DelOne")]
+        public async Task<IActionResult> DeleteGoal([FromBody] int dailyID)
+        {
+            try
+            {
+                await _goalService.DeleteGoalAsync(dailyID);
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

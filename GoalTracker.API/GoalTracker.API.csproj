@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\gatewayproject\GoalTracker.Application\GoalTracker.Application.csproj" />
-    <ProjectReference Include="..\..\gatewayproject\GoalTracker.Infrastructure\GoalTracker.Infrastructure.csproj" />
+    <ProjectReference Include="..\GoalTracker.Application\GoalTracker.Application.csproj" />
+    <ProjectReference Include="..\GoalTracker.Infrastructure\GoalTracker.Infrastructure.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

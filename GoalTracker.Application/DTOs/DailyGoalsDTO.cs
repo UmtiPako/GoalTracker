@@ -8,12 +8,12 @@ namespace GoalTracker.Application.DTOs
 {
     public class DailyGoalsDTO
     {
-        public Guid guid { get; }
+        public int dailyID { get; }
         public string GoalText { get; }
 
-        public DailyGoalsDTO(Guid guid, string goalText)
+        public DailyGoalsDTO(int dailyID, string goalText)
         {
-            this.guid = guid;
+            this.dailyID = dailyID;
             this.GoalText = goalText;
         }
     }

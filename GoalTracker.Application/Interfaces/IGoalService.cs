@@ -13,5 +13,7 @@ namespace GoalTracker.Application.Interfaces
         public Task<List<DailyGoalsDTO>> ListAsync();
 
         public Task AddGoalAsync(GoalDTO goalDTO);
+
+        public Task DeleteGoalAsync(int dailyID);
     }
 }

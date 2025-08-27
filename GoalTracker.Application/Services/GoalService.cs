@@ -31,9 +31,9 @@ namespace GoalTracker.Application.Services
             else throw new ArgumentNullException("There are no goals that day!");
         }
 
-        public async Task DeleteGoalAsync(GoalDTO goalDTO)
+        public async Task DeleteGoalAsync(int dailyID)
         {
-
+            await _goalRepository.DeleteAsync(dailyID);
         }
 
         public async Task AddGoalAsync(GoalDTO goalDTO)

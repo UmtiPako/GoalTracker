@@ -4,11 +4,10 @@ using GoalTracker.Domain.Models;
 using GoalTracker.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GoalTracker.Infrastructure.Repositories
@@ -21,51 +20,85 @@ namespace GoalTracker.Infrastructure.Repositories
         public GoalRepository(AppDbContext dbContext, IHttpContextAccessor httpContextAccessor)
         {
             _dbContext = dbContext;
-            _httpContextAccessor = httpContextAccessor;        
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task AddGoalAsync(Goal goal)
         {
-            goal.GoalUsername = _httpContextAccessor.HttpContext?.User.Identity.Name;
+            var username = GetCurrentUsername();
+            if (string.IsNullOrEmpty(username))
+                throw new UnauthorizedAccessException("User is not authenticated");
 
-            await _dbContext.AddAsync(goal);
+            goal.GoalUsername = username;
+
+            var today = DateOnly.FromDateTime(DateTime.Today);
+
+            var dailyIDs = await _dbContext.Goals
+                .Where(g => g.Date == today && g.GoalUsername == username)
+                .Select(g => g.dailyID).ToListAsync();
+
+            var maxDailyId = 0;
+
+            if (!dailyIDs.IsNullOrEmpty()) maxDailyId = dailyIDs.Max();
+
+            goal.dailyID = maxDailyId + 1;
+
+            await _dbContext.Goals.AddAsync(goal);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Goal goal)
+        public async Task DeleteAsync(int dailyID)
         {
-             _dbContext.Goals.Remove(goal);
+            var username = GetCurrentUsername();
+            if (string.IsNullOrEmpty(username))
+                throw new UnauthorizedAccessException("User is not authenticated");
 
-            await _dbContext.SaveChangesAsync();
+            var today = DateOnly.FromDateTime(DateTime.Today);
+            var goalToDelete = await _dbContext.Goals
+                .FirstOrDefaultAsync(g => g.dailyID == dailyID &&
+                                   g.Date == today &&
+                                   g.GoalUsername == username);
+
+            if (goalToDelete != null)
+            {
+                _dbContext.Goals.Remove(goalToDelete);
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
-        public async Task<List<DailyGoalsDTO>?> GetAllDailyGoals()
+        public async Task<List<DailyGoalsDTO>> GetAllDailyGoals()
         {
-            var userNameAsking = _httpContextAccessor.HttpContext?.User.Identity.Name;
+            var username = GetCurrentUsername();
+            if (string.IsNullOrEmpty(username))
+                return new List<DailyGoalsDTO>();
 
-            var allGoals = await _dbContext.Goals.Where
-                (g => g.Date == DateOnly.FromDateTime(DateTime.Today) && 
-                g.GoalUsername == userNameAsking)
+            var today = DateOnly.FromDateTime(DateTime.Today);
+            var allGoals = await _dbContext.Goals
+                .Where(g => g.Date == today && g.GoalUsername == username)
+                .Select(g => new DailyGoalsDTO(g.dailyID, g.Text))
                 .ToListAsync();
 
-            List<DailyGoalsDTO> allGoalDTOs = new List<DailyGoalsDTO>();
-
-            foreach (var goal in allGoals)
-            {
-                var goalDTO = new DailyGoalsDTO(goal.Id, goal.Text);
-                allGoalDTOs.Add(goalDTO);
-            }
-
-            return allGoalDTOs;
+            return allGoals;
         }
 
         public async Task<List<Goal>?> GetGoalsFromDay(DateOnly day)
         {
-            var userNameAsking = _httpContextAccessor.HttpContext?.User.Identity.Name;
+            var username = GetCurrentUsername();
+            if (string.IsNullOrEmpty(username))
+                return new List<Goal>();
 
-            var goalsFromDay = await _dbContext.Goals.Where(g => g.Date == day 
-            && g.GoalUsername == userNameAsking).ToListAsync();
+            var goalsFromDay = await _dbContext.Goals
+                .Where(g => g.Date == day && g.GoalUsername == username)
+                .ToListAsync();
+
             return goalsFromDay;
         }
+
+        #region Helpers
+        private string? GetCurrentUsername()
+        {
+            return _httpContextAccessor.HttpContext?.User?.Identity?.Name;
+        }
+        #endregion
     }
 }

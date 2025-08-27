@@ -55,6 +55,7 @@ builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        options.IncludeErrorDetails = true;
         options.RequireHttpsMetadata = false; // dev için
         options.SaveToken = true;
         options.TokenValidationParameters = new()
