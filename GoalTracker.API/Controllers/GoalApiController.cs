@@ -1,4 +1,5 @@
-﻿using GoalTracker.Application.DTOs;
+﻿using GoalTracker.API;
+using GoalTracker.Application.DTOs;
 using GoalTracker.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -13,17 +14,31 @@ namespace GoalTracker.ApiControllers
     public class GoalApiController : ControllerBase
     {
         private readonly IGoalService _goalService;
+        private readonly Exceptionist _exceptionist;
 
         public GoalApiController(IGoalService goalService)
         {
             _goalService = goalService;
+            _exceptionist = new Exceptionist();
         }
 
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllGoals()
         {
-            var goals = await _goalService.ListAsync();
-            return goals.IsNullOrEmpty() ? BadRequest("Nah.") : Ok(goals);
+            try
+            {
+                var goals = await _goalService.ListAsync();
+
+                if (goals == null || goals.Count == 0)
+                    return NotFound(new { message = "No goals found" });
+
+                return Ok(goals);
+            }
+            catch (Exception ex) 
+            {
+                return _exceptionist.HandleException(ex);
+            }
+
         }
 
         [HttpPost("AddOne")]
@@ -34,9 +49,9 @@ namespace GoalTracker.ApiControllers
                 await _goalService.AddGoalAsync(goalDTO);
                 return Ok();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return _exceptionist.HandleException(ex);
             }
         }
 
@@ -47,9 +62,10 @@ namespace GoalTracker.ApiControllers
             {
                 await _goalService.DeleteGoalAsync(dailyID);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return _exceptionist.HandleException(ex);
             }
         }
     }
