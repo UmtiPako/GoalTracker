@@ -1,4 +1,5 @@
 using GoalTracker;
+using GoalTracker.API;
 using GoalTracker.Application;
 using GoalTracker.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -9,7 +10,14 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddProblemDetails(configure =>
+{
+    configure.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Extensions.TryAdd("id", context.HttpContext.TraceIdentifier);
+    };
+});
+builder.Services.AddExceptionHandler<Exceptionist>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -80,7 +88,11 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseExceptionHandler(options =>
+{
+    options.UseDeveloperExceptionPage();
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

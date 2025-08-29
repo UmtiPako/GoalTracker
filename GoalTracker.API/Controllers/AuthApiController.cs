@@ -14,58 +14,41 @@ namespace GoalTracker.Controllers
     {
         private readonly JwtTokenHelper _jwtTokenHelper;
         private readonly IAuthService _authService;
-        private readonly Exceptionist _exceptionist;
 
-        public AuthApiController(JwtTokenHelper jwtTokenHelper, IAuthService authService, Exceptionist exceptionist)
+        public AuthApiController(JwtTokenHelper jwtTokenHelper, IAuthService authService)
         {
             _jwtTokenHelper = jwtTokenHelper;
             _authService = authService;
-            _exceptionist = exceptionist;
         }
 
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO loginDTO)
         {
-            try
-            {
-                var result = await _authService.Login(loginDTO);
+            var result = await _authService.Login(loginDTO);
 
-                if (result)
-                {
-                    var token = _jwtTokenHelper.GenerateToken(loginDTO.Username);
-                    return Ok(new { Token = token });
-                }
-
-                return Unauthorized();
-            }
-            catch (Exception ex)
+            if (result)
             {
-                return _exceptionist.HandleException(ex);
+                var token = _jwtTokenHelper.GenerateToken(loginDTO.Username);
+                return Ok(new { Token = token });
             }
 
+            return Unauthorized();
         }
 
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register(LoginDTO loginDTO)
         {
-            try
-            {
-                var result = await _authService.Register(loginDTO);
+            var result = await _authService.Register(loginDTO);
 
-                if (result)
-                {
-                    var token = _jwtTokenHelper.GenerateToken(loginDTO.Username);
-                    return Ok(new { Token = token });
-                }
-
-                return Unauthorized();
-            }
-            catch (Exception ex)
+            if (result)
             {
-                return _exceptionist.HandleException(ex);
+                var token = _jwtTokenHelper.GenerateToken(loginDTO.Username);
+                return Ok(new { Token = token });
             }
+
+            return Unauthorized();
         }
     }
 }

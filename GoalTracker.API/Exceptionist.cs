@@ -1,18 +1,53 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace GoalTracker.API
 {
-    public class Exceptionist : ControllerBase
+    // Global exception handler class 
+    public class Exceptionist : IExceptionHandler
     {
-        public IActionResult HandleException(Exception ex)
+        private readonly ILogger _logger;
+        private readonly IProblemDetailsService _problemDetailsService;
+
+        public Exceptionist(ILogger<Exceptionist> logger, IProblemDetailsService problemDetailsService)
         {
-            return ex switch
+            _logger = logger;
+            _problemDetailsService = problemDetailsService;
+        }
+
+        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+        {
+ 
+            _logger.LogError("Unhandled exception: ");
+
+            httpContext.Response.StatusCode = exception switch
+                {
+                    ArgumentException => StatusCodes.Status400BadRequest,
+                    KeyNotFoundException => StatusCodes.Status404NotFound,
+                    UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
+                    _ => StatusCodes.Status500InternalServerError
+                };
+
+            await _problemDetailsService.TryWriteAsync(new ProblemDetailsContext
             {
-                ArgumentException => BadRequest(new { message = ex.Message }),
-                KeyNotFoundException => NotFound(new { message = ex.Message }),
-                UnauthorizedAccessException => Unauthorized(new { message = "Unauthorized" }),
-                _ => StatusCode(500, new { message = "Unexpected error occurred" })
-            };
+                HttpContext = httpContext,
+                Exception = exception,
+                ProblemDetails = new ProblemDetails
+                {
+                    Type = exception.GetType().Name,
+                    Title = exception switch
+                    {
+                        ArgumentException => "Bad Request",
+                        KeyNotFoundException => "Resource Not Found",
+                        UnauthorizedAccessException => "Unauthorized",
+                        _ => "Internal Server Error"
+                    },
+                    Detail = exception.Message,
+                }
+            });
+
+            return true;
         }
     }
 }

@@ -64,6 +64,8 @@ namespace GoalTracker.Infrastructure.Repositories
                 _dbContext.Goals.Remove(goalToDelete);
                 await _dbContext.SaveChangesAsync();
             }
+            else
+                throw new ArgumentNullException("No goal to delete!");
         }
 
         public async Task<List<DailyGoalsDTO>> GetAllDailyGoals()
@@ -95,7 +97,7 @@ namespace GoalTracker.Infrastructure.Repositories
         }
 
         #region Helpers
-        private string? GetCurrentUsername()
+        public string? GetCurrentUsername()
         {
             return _httpContextAccessor.HttpContext?.User?.Identity?.Name;
         }
