@@ -7,6 +7,8 @@ using GoalTracker.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using GoalTracker.Infrastructure.Persistence;
 using GoalTracker.Domain.Models;
+using Microsoft.Identity.Client;
+using GoalTracker.Application.DTOs;
 
 namespace GoalTracker.Infrastructure.Tests
 {
@@ -46,14 +48,66 @@ namespace GoalTracker.Infrastructure.Tests
         }
     
 
-            [Fact]
+        [Fact]
         public void GetCurrentUsername_ShouldReturnNull_IfNotAuthenticated()
         {
             _mockHttpContextAccessor.Setup(x => x.HttpContext).Returns((HttpContext?)null);
 
             var result = _repository.GetCurrentUsername();
 
-            Assert.Equal("Umti", result);
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async Task AddGoalAsync_AddedGoalDateMustBeTomorrow()
+        {
+            // Arrange
+            var goal = new Goal("Goal created for addition test.");
+
+            // Act
+            await _repository.AddGoalAsync(goal);
+            await _context.SaveChangesAsync();
+            var tomorrowsGoals = await _context.Goals
+                .Where(g => g.Date == DateOnly.FromDateTime(DateTime.Today.AddDays(1)))
+                .ToListAsync();
+
+            // Assert
+            Assert.Contains<Goal>(goal, tomorrowsGoals);
+        }
+
+        [Fact]
+        public async Task AddGoalAsync_ShouldFail_IfGoalTextIsEmpty()
+        {
+            // Arrange
+            var goal = new Goal("");
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>( async () => await _repository.AddGoalAsync(goal) );
+        }
+
+        [Fact]
+        public async Task AddGoalAsync_SetsDailyIdsAccordingly_WhenNewGoalsAreAdded()
+        {
+            // Arrange
+            var goal1 = new Goal("Goal 1 created for daily Id test");
+            var goal2 = new Goal("Goal 2 created for daily Id test");
+            var goal3 = new Goal("Goal 3 created for daily Id test");
+            int i = 1;
+
+            // Act
+            await _repository.AddGoalAsync(goal1);
+            await _repository.AddGoalAsync(goal2);
+            await _repository.AddGoalAsync(goal3);
+
+            var goalsFromDay = await _repository
+                .GetGoalsFromDay(DateOnly.FromDateTime(DateTime.Today.AddDays(1)));
+
+            // Assert
+            foreach (var goal in goalsFromDay)
+            {
+                Assert.Equal(i, goal.dailyID);
+                i++;
+            }
         }
     }
 }

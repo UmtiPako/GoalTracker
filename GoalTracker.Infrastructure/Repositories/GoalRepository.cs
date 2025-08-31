@@ -53,10 +53,10 @@ namespace GoalTracker.Infrastructure.Repositories
             if (string.IsNullOrEmpty(username))
                 throw new UnauthorizedAccessException("User is not authenticated");
 
-            var today = DateOnly.FromDateTime(DateTime.Today);
+            var tomorrow = DateOnly.FromDateTime(DateTime.Today.AddDays(1));
             var goalToDelete = await _dbContext.Goals
                 .FirstOrDefaultAsync(g => g.dailyID == dailyID &&
-                                   g.Date == today &&
+                                   g.Date == tomorrow &&
                                    g.GoalUsername == username);
 
             if (goalToDelete != null)

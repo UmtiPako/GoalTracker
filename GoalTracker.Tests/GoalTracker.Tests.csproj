@@ -20,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GoalTracker.API\GoalTracker.API.csproj" />
     <ProjectReference Include="..\GoalTracker.Application\GoalTracker.Application.csproj" />
+    <ProjectReference Include="..\GoalTracker.Domain\GoalTracker.Domain.csproj" />
     <ProjectReference Include="..\GoalTracker.Infrastructure\GoalTracker.Infrastructure.csproj" />
   </ItemGroup>
 
