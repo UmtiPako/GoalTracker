@@ -31,10 +31,10 @@ namespace GoalTracker.Infrastructure.Repositories
 
             goal.GoalUsername = username;
 
-            var today = DateOnly.FromDateTime(DateTime.Today);
+            var tomorrow = DateOnly.FromDateTime(DateTime.Today).AddDays(1);
 
             var dailyIDs = await _dbContext.Goals
-                .Where(g => g.Date == today && g.GoalUsername == username)
+                .Where(g => g.Date == tomorrow && g.GoalUsername == username)
                 .Select(g => g.dailyID).ToListAsync();
 
             var maxDailyId = 0;

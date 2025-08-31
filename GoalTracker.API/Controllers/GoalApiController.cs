@@ -29,10 +29,10 @@ namespace GoalTracker.ApiControllers
         }
 
         [HttpGet("GetFrom")]
-        public async Task<IActionResult> GetFromDay([FromForm] DateOnly day)
+        public async Task<IActionResult> GetFromDay(DateOnly day)
         {
-            await _goalService.ListFromDayAsync(day);
-            return Ok(day);
+            var goalsFrom = await _goalService.ListFromDayAsync(day);
+            return Ok(goalsFrom);
         }
 
         [HttpPost("AddOne")]

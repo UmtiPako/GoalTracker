@@ -14,12 +14,12 @@ namespace GoalTracker.Infrastructure.Tests
     {
         private readonly AppDbContext _context;
         private readonly Mock<IHttpContextAccessor> _mockHttpContextAccessor;
-        private readonly GoalRepository _repository; 
+        private readonly GoalRepository _repository; // Mock deðil, gerçek repository!
 
         public AppInfrastructureTests()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // Her test için unique DB
                 .Options;
 
             _context = new AppDbContext(options);
@@ -31,6 +31,7 @@ namespace GoalTracker.Infrastructure.Tests
         [Fact]
         public void GetCurrentUsername_ShouldReturnUsername_IfAuthenticated()
         {
+            // Arrange
             var mockIdentity = new Mock<IIdentity>();
             var mockUser = new Mock<ClaimsPrincipal>();
             var mockContext = new Mock<HttpContext>();
@@ -40,8 +41,10 @@ namespace GoalTracker.Infrastructure.Tests
             mockContext.Setup(x => x.User).Returns(mockUser.Object); 
             _mockHttpContextAccessor.Setup(x => x.HttpContext).Returns(mockContext.Object); 
 
+            // Act
             var result = _repository.GetCurrentUsername(); 
 
+            // Assert
             Assert.Equal("Umti", result);
         }
     
@@ -49,10 +52,13 @@ namespace GoalTracker.Infrastructure.Tests
             [Fact]
         public void GetCurrentUsername_ShouldReturnNull_IfNotAuthenticated()
         {
+            // Arrange
             _mockHttpContextAccessor.Setup(x => x.HttpContext).Returns((HttpContext?)null);
 
+            // Act
             var result = _repository.GetCurrentUsername();
 
+            // Assert
             Assert.Equal("Umti", result);
         }
     }
