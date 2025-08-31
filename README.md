@@ -1,6 +1,6 @@
 **This project is still getting updates! Therefore, keep in mind that README will also change in the future.**
 # GoalTracker - Daily Goals and Trophy Hunting API
-## This is a .NET Core WEB API created specifically for a mobile app, but built on a way that lets developers use it in any platform they prefer.
+*This is a .NET Core WEB API created specifically for a mobile app, but built on a way that lets developers use it in any platform they prefer.*
 ---
 ## Features
 - Login and register endpoints for further use.
