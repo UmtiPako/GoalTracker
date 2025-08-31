@@ -26,7 +26,13 @@ namespace GoalTracker.ApiControllers
                 return NotFound(new { message = "No goals found" });
 
             return Ok(goals);
+        }
 
+        [HttpGet("GetFrom")]
+        public async Task<IActionResult> GetFromDay([FromForm] DateOnly day)
+        {
+            await _goalService.ListFromDayAsync(day);
+            return Ok(day);
         }
 
         [HttpPost("AddOne")]

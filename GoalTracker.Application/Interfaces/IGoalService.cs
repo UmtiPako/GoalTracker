@@ -11,6 +11,7 @@ namespace GoalTracker.Application.Interfaces
     public interface IGoalService
     {
         public Task<List<DailyGoalsDTO>> ListAsync();
+        public Task<List<DailyGoalsDTO>> ListFromDayAsync(DateOnly day);
 
         public Task AddGoalAsync(GoalDTO goalDTO);
 

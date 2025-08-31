@@ -35,7 +35,7 @@ namespace GoalTracker.Domain.Models
                 throw new ArgumentException("Goal text cannot exceed 40 characters", nameof(text));
 
             Text = text.Trim();
-            Date = DateOnly.FromDateTime(DateTime.Now); 
+            Date = DateOnly.FromDateTime(DateTime.Now).AddDays(1); 
             IsDone = false;
         }
     }

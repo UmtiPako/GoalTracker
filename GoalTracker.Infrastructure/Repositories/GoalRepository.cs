@@ -77,20 +77,21 @@ namespace GoalTracker.Infrastructure.Repositories
             var today = DateOnly.FromDateTime(DateTime.Today);
             var allGoals = await _dbContext.Goals
                 .Where(g => g.Date == today && g.GoalUsername == username)
-                .Select(g => new DailyGoalsDTO(g.dailyID, g.Text))
+                .Select(g => new DailyGoalsDTO(g.dailyID, g.Text, g.IsDone))
                 .ToListAsync();
 
             return allGoals;
         }
 
-        public async Task<List<Goal>?> GetGoalsFromDay(DateOnly day)
+        public async Task<List<DailyGoalsDTO>?> GetGoalsFromDay(DateOnly day)
         {
             var username = GetCurrentUsername();
             if (string.IsNullOrEmpty(username))
-                return new List<Goal>();
+                return new List<DailyGoalsDTO>();
 
             var goalsFromDay = await _dbContext.Goals
                 .Where(g => g.Date == day && g.GoalUsername == username)
+                .Select(g => new DailyGoalsDTO(g.dailyID, g.Text, g.IsDone))
                 .ToListAsync();
 
             return goalsFromDay;

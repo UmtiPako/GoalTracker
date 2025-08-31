@@ -24,7 +24,7 @@ namespace GoalTracker.Application.Services
             if (list != null) return list;
             else throw new ArgumentNullException("There are no goals!");
         }
-        public async Task<List<Goal>> ListFromDayAsync(DateOnly day)
+        public async Task<List<DailyGoalsDTO>> ListFromDayAsync(DateOnly day)
         {
             var list = await _goalRepository.GetGoalsFromDay(day);
             if (list != null) return list;

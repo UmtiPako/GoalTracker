@@ -10,11 +10,13 @@ namespace GoalTracker.Application.DTOs
     {
         public int dailyID { get; }
         public string GoalText { get; }
+        public bool isDone { get; set; }
 
-        public DailyGoalsDTO(int dailyID, string goalText)
+        public DailyGoalsDTO(int dailyID, string goalText, bool isDone)
         {
             this.dailyID = dailyID;
             this.GoalText = goalText;
+            this.isDone = isDone;
         }
     }
 }
