@@ -2127,6 +2127,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "GoalTracker.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.3.0",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.8",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8"
         },
@@ -5815,7 +5816,6 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "GoalTracker.Application >= 1.0.0",
-      "GoalTracker.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 2.3.1",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.19",
       "Microsoft.EntityFrameworkCore >= 9.0.8",
@@ -5858,9 +5858,6 @@
           "projectReferences": {
             "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj": {
               "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Application\\GoalTracker.Application.csproj"
-            },
-            "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj": {
-              "projectPath": "C:\\Users\\umutp\\source\\repos\\GoalTracker\\GoalTracker.Domain\\GoalTracker.Domain.csproj"
             }
           }
         }
@@ -5875,7 +5872,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -5924,7 +5921,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,11 +10,8 @@ namespace GoalTracker.Application.Interfaces
 {
     public interface IGoalRepository
     {
-        Task<List<DailyGoalsDTO>?> GetAllDailyGoals();
-        Task<List<DailyGoalsDTO>?> GetGoalsFromDay(DateOnly day);
+        Task<List<DailyGoalsDTO>> GetGoalsFromDay(string username, DateOnly day);
         Task AddGoalAsync(Goal goal);
-        Task DeleteAsync(int dailyID);
-        string? GetCurrentUsername();
-
+        Task DeleteAsync(int dailyID, string username, DateOnly day);
     }
 }

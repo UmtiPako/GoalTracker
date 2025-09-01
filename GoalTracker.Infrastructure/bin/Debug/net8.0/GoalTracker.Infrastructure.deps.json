@@ -9,7 +9,6 @@
       "GoalTracker.Infrastructure/1.0.0": {
         "dependencies": {
           "GoalTracker.Application": "1.0.0",
-          "GoalTracker.Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.19",
           "Microsoft.EntityFrameworkCore": "9.0.8",
@@ -1391,12 +1390,13 @@
       "GoalTracker.Application/1.0.0": {
         "dependencies": {
           "GoalTracker.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.3.0",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.8",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8"
         },
         "runtime": {
           "GoalTracker.Application.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1408,7 +1408,7 @@
         },
         "runtime": {
           "GoalTracker.Domain.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
