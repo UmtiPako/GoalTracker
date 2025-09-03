@@ -11,6 +11,11 @@ namespace GoalTracker.Application.DTOs
     {
         [Required(ErrorMessage = "Goal text is required!")]
         [StringLength(40, MinimumLength = 3, ErrorMessage = "Goal text length should be 3 < x < 40!")]
-        public required string goalText { get; set; }
+        public string goalText { get; set; }
+
+        public GoalDTO(string t)
+        {
+            this.goalText = t;
+        }
     }
 }

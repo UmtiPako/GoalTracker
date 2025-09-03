@@ -1,5 +1,6 @@
 ﻿using GoalTracker.Domain.Entities;
 using GoalTracker.Domain.Models;
+using GoalTracker.Domain.ValueObjects;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,10 +18,26 @@ namespace GoalTracker.Infrastructure.Persistence
         }
         public DbSet<Goal> Goals { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Goal>(entity =>
+            {
+                entity.Property(g => g.Text)
+                      .HasConversion(
+                          v => v.Value,              
+                          v => new GoalText(v)      
+                      );
+
+                entity.Property(g => g.GoalUsername)
+                      .HasConversion(
+                          v => v.Value,
+                          v => new GoalUsername(v)
+                      );
+            });
         }
-        
+
+
     }
 }

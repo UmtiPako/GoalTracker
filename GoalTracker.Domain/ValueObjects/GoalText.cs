@@ -10,22 +10,24 @@ namespace GoalTracker.Domain.ValueObjects
     public record GoalText
     {
         public string Value { get; }
-        public GoalText(string val)
+
+        private GoalText() { }
+        public GoalText(string text)
         {
-            if (string.IsNullOrWhiteSpace(val))
-                throw new ArgumentException("Goal text cannot be null or empty", nameof(val));
+            if (string.IsNullOrWhiteSpace(text))
+                throw new ArgumentException("Goal text cannot be null or empty", nameof(text));
 
-            if (val.Trim().Length < 3)
-                throw new ArgumentException("Goal text must be at least 3 characters long", nameof(val));
+            if (text.Trim().Length < 3)
+                throw new ArgumentException("Goal text must be at least 3 characters long", nameof(text));
 
-            if (val.Trim().Length > 40)
-                throw new ArgumentException("Goal text cannot exceed 40 characters", nameof(val));
+            if (text.Trim().Length > 40)
+                throw new ArgumentException("Goal text cannot exceed 40 characters", nameof(text));
 
-            Value = val;
+            Value = text;
         }
 
         public override string ToString() => Value;
-        public bool Equals(string val) => Value.Equals(val);
+        public bool Equals(string text) => Value.Equals(text);
 
     }
 }

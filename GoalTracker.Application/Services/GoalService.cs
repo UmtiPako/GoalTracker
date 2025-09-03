@@ -66,10 +66,10 @@ namespace GoalTracker.Application.Services
 
         public async Task<int> CalculateDailyID()
         {
-            var todaysGoals = await ListAsync();
+            var tomorrowsGoals = await ListFromDayAsync(DateOnly.FromDateTime(DateTime.Today.AddDays(1)));
 
-            var nextDailyId = todaysGoals.Any()
-            ? todaysGoals.Max(g => g.dailyID) + 1 : 1;
+            var nextDailyId = tomorrowsGoals.Any()
+            ? tomorrowsGoals.Max(g => g.dailyID) + 1 : 1;
 
             return nextDailyId;
         }

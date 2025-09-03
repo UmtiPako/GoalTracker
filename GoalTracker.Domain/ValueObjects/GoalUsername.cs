@@ -10,6 +10,7 @@ namespace GoalTracker.Domain.ValueObjects
     {
         public string Value { get; }
 
+        private GoalUsername() { }
         public GoalUsername(string username)
         {
             if (username.Trim().Length > 16)

@@ -17,6 +17,8 @@ namespace GoalTracker.Domain.Models
         public bool IsDone { get; private set; }
         public DateOnly Date { get; private set; }
 
+        private Goal() { }
+
         public Goal(string text, string username, int dailyID)
         {
 

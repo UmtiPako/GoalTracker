@@ -16,7 +16,7 @@ namespace GoalTracker.Infrastructure.Repositories
     {
         private readonly AppDbContext _dbContext;
 
-        public GoalRepository(AppDbContext dbContext, IHttpContextAccessor httpContextAccessor)
+        public GoalRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
