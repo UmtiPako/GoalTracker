@@ -8,6 +8,8 @@
 - Delete goals set for tomorrow.
 - Get all daily goals.
 - Get goals from a past day.
+- Clean Architecture
+- Domain-Driven Design Principles
 ---
 ## Tech Stack
 - ASP.NET Core WEB API
@@ -15,6 +17,5 @@
 - xUnit for unit testing
 - Swagger and Postman for API/endpoint testing
 - ASP.NET Identity and JWT Bearer Token used for Authentication and Authorization
-- Clean Architecture
 ---
 > ...
